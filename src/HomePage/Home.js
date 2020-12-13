@@ -131,12 +131,38 @@ class Home extends React.Component {
                             {this.state.marker.map((position, idx) =>
                                 <Marker key={idx} position={position}>
                                     <Popup>
-                                        <TableComponent
-                                            name={this.state.name[idx]}
-                                            marker={this.state.marker[idx]}
-                                            owner={this.state.owner[idx]}
-                                            income={this.state.income[idx]}
-                                            description={this.state.description[idx]} />
+                                        {this.state.mode[idx] === "view" ?
+                                            <React.Fragment>
+                                                <TableComponent
+                                                    name={this.state.name[idx]}
+                                                    marker={this.state.marker[idx]}
+                                                    owner={this.state.owner[idx]}
+                                                    income={this.state.income[idx]}
+                                                    description={this.state.description[idx]} />
+
+                                                <Box style={{ textAlign: "center" }}>
+                                                    <Button variant="contained" color="primary"
+                                                        style={{ margin: 5, width: 70 }}
+                                                        onClick={() => this.modeSwitch_edit(idx)}>Edit</Button>
+                                                    <Button variant="contained" color="secondary"
+                                                        style={{ margin: 5, width: 70 }}
+                                                        onClick={() => this.deleteHandler(idx)}>Delete</Button>
+                                                </Box>
+                                            </React.Fragment>
+
+                                            :
+                                            <React.Fragment>
+                                                <FormComponent
+                                                    idx={idx}
+                                                    name={this.state.name[idx]}
+                                                    owner={this.state.owner[idx]}
+                                                    income={this.state.income[idx]}
+                                                    description={this.state.description[idx]}
+                                                    action={this.editHandler}
+                                                    action2={() => this.modeSwitch_view(idx)} />
+
+                                            </React.Fragment>
+                                        }
                                     </Popup>
 
                                 </Marker>
