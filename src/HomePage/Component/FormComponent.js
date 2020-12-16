@@ -12,7 +12,9 @@ class FormComponent extends React.Component {
             name: '',
             owner: '',
             income: '',
-            description: ''
+            description: '',
+            member: '',
+            age: '',
         }
     }
 
@@ -21,7 +23,9 @@ class FormComponent extends React.Component {
             name: this.props.name,
             owner: this.props.owner,
             income: this.props.income,
-            description: this.props.description
+            description: this.props.description,
+            member: this.props.member,
+            age: this.props.age
         })
     }
 
@@ -37,6 +41,8 @@ class FormComponent extends React.Component {
             this.state.name,
             this.state.owner,
             Number(this.state.income),
+            Number(this.state.member),
+            Number(this.state.age),
             this.state.description
         )
     }
@@ -91,6 +97,30 @@ class FormComponent extends React.Component {
                             fullWidth
                             name="description"
                             value={this.state.description}
+                            onChange={this.onChangeHandler}
+                        />
+                    </Grid>
+
+                    <Grid item xs={12}>
+                        <TextField variant="outlined"
+                            margin="dense"
+                            label="No. of Household Members"
+                            name="member"
+                            fullWidth
+                            type="number"
+                            value={this.state.member}
+                            onChange={this.onChangeHandler}
+                        />
+                    </Grid>
+
+                    <Grid item xs={12}>
+                        <TextField variant="outlined"
+                            margin="dense"
+                            label="Age"
+                            name="age"
+                            fullWidth
+                            type="number"
+                            value={this.state.age}
                             onChange={this.onChangeHandler}
                         />
                     </Grid>

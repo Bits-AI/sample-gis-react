@@ -77,24 +77,12 @@ class DrawerComponent extends React.Component {
 
                 </List>
 
-                <div style={{
-                    position: 'absolute', bottom: '8px', left: '10px',
-                }}>
+                <div style={{ position: 'relative', top: '10%'}}>
                     <p>
                     Developed by Nicholas Chin
                     </p>
-                    <p style={{ textAlign: "left" }}>
-                    Designed with: 
-                    <br /> 
-                    - ReactJS
-                    <br />
-                    - React Leaflet
-                    <br />
-                    - Open Street Map
-                    <br />
-                    - Material UI React
-                    <br />
-                    - Recharts
+                    <p style={{ textAlign: "left", paddingLeft: '0.6rem' }}>
+                    Designed with: ReactJS
                     </p>
                 </div>
             </div>

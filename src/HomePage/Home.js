@@ -24,36 +24,102 @@ class Home extends React.Component {
 
             marker: [
                 [6.039, 116.12],
-                [2.91, 101.655]
+                [2.91, 101.655],
+                [4.61, 101.09],
+                [3.42, 101.79],
+                [1.47, 103.90],
+                [6.40, 100.13],
+                [5.93, 116.05],
+                [2.28, 111.83],
+                [3.79, 103.32],
+                [6.17, 102.22]
             ],
             name: [
                 'University Malaysia Sabah (UMS)',
-                'Kirby International College'
+                'Kirby International College',
+                'Fair Park Ipoh',
+                'Genting Highlands',
+                'Pasir Gudang',
+                'Kampung Perak',
+                'Kota Kinabalu International Airport (KKIA)',
+                'Miri',
+                'Kemunting',
+                'Kampung Kok Keli'
             ],
             owner: [
                 'Sabah Government',
-                'No information'
+                'No information',
+                'No information',
+                'Genting',
+                'Johor Bahru',
+                'Perak',
+                'Malaysia Airport',
+                'Sarawak Government',
+                'Kuantan',
+                'Kota Bharu'
             ],
             income: [
                 3000000,
-                3000
+                3000,
+                0,
+                50000000,
+                80,
+                6000,
+                1,
+                7500,
+                200,
+                13
             ],
             description: [
                 'The one and only university in Sabah.',
-                'Kirby International College located at Cyberjaya.'
+                'Kirby International College located at Cyberjaya.',
+                'Fair Park located in Ipoh.',
+                'Genting Highlands, famous tourist attraction in West Malaysia.',
+                'Pasir Gudang area.',
+                'Kampung Perak beside Kuala Perlis area',
+                'International Airport at Kota Kinabalu, Sabah.',
+                'Miri City in Sarawak.',
+                'Kemunting area in Kuantan.',
+                'Kampung Kok Keli in Kota Bharu'
+            ],
+            member: [
+                100,
+                20,
+                0,
+                300,
+                5000,
+                80,
+                2000,
+                30000,
+                91,
+                2500
+            ],
+            age: [
+                25,
+                40,
+                0,
+                50,
+                43,
+                61,
+                80,
+                35,
+                12,
+                67
             ]
         }
     }
 
     addMarker = e => {
         const { lat, lng } = e.latlng
-        const { marker, name, income, description, mode } = this.state
+        const { marker, name, income, description, member, age, mode } = this.state
         marker.push([lat, lng])
         name.push('New Location')
         income.push(0)
         description.push('')
+        member.push(0)
+        age.push(0)
         mode.push('view')
-        this.setState({ marker, name, income, description, mode })
+        this.setState({ marker, name, income, description, member, age, mode })
     }
 
     modeSwitch_edit = (idx) => {
@@ -70,21 +136,25 @@ class Home extends React.Component {
         this.setState({ mode })
     }
 
-    editHandler = (idx, value1, value2, value3, value4) => {
+    editHandler = (idx, value1, value2, value3, value4, value5, value6) => {
         let name = [...this.state.name]
         let owner = [...this.state.owner]
         let income = [...this.state.income]
         let description = [...this.state.description]
+        let member = [...this.state.member]
+        let age = [...this.state.age]
         let mode = [...this.state.mode]
 
         name[idx] = value1
         owner[idx] = value2
         income[idx] = value3
-        description[idx] = value4
+        member[idx] = value4
+        age[idx] = value5
+        description[idx] = value6
         mode[idx] = "view"
 
         this.setState({
-            name, owner, income, description, mode
+            name, owner, income, description, member, age, mode
         })
     }
 
@@ -94,6 +164,8 @@ class Home extends React.Component {
         let owner = [...this.state.owner]
         let income = [...this.state.income]
         let description = [...this.state.description]
+        let member = [...this.state.member]
+        let age = [...this.state.age]
         let mode = [...this.state.mode]
 
         marker.splice(idx, 1)
@@ -101,10 +173,12 @@ class Home extends React.Component {
         owner.splice(idx, 1)
         income.splice(idx, 1)
         description.splice(idx, 1)
+        member.splice(idx, 1)
+        age.splice(idx, 1)
         mode.splice(idx, 1)
 
         this.setState({
-            marker, name, owner, income, description, mode
+            marker, name, owner, income, description, member, age, mode
         })
     }
 
@@ -158,6 +232,8 @@ class Home extends React.Component {
                                                     owner={this.state.owner[idx]}
                                                     income={this.state.income[idx]}
                                                     description={this.state.description[idx]}
+                                                    member={this.state.member[idx]}
+                                                    age={this.state.age[idx]}
                                                     action={this.editHandler}
                                                     action2={() => this.modeSwitch_view(idx)} />
 
@@ -198,7 +274,9 @@ class Home extends React.Component {
                                                     marker={this.state.marker[idx]}
                                                     owner={this.state.owner[idx]}
                                                     income={this.state.income[idx]}
-                                                    description={this.state.description[idx]} />
+                                                    description={this.state.description[idx]}
+                                                    member={this.state.member[idx]}
+                                                    age={this.state.age[idx]} />
 
                                                 <Box style={{ textAlign: "center" }}>
                                                     <Button variant="contained" color="primary"
@@ -218,6 +296,8 @@ class Home extends React.Component {
                                                     owner={this.state.owner[idx]}
                                                     income={this.state.income[idx]}
                                                     description={this.state.description[idx]}
+                                                    member={this.state.member[idx]}
+                                                    age={this.state.age[idx]}
                                                     action={this.editHandler}
                                                     action2={() => this.modeSwitch_view(idx)} />
 

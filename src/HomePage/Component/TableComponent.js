@@ -41,6 +41,20 @@ class TableComponent extends React.Component {
                         <Grid item xs={6} style={{ textAlign: "right" }}>
                             {this.props.description}
                         </Grid>
+
+                        <Grid item xs={6} style={{ textAlign: "left" }}>
+                            No. of Household Members
+                        </Grid>
+                        <Grid item xs={6} style={{ textAlign: "right" }}>
+                            {this.props.member}
+                        </Grid>
+
+                        <Grid item xs={6} style={{ textAlign: "left" }}>
+                            Age
+                        </Grid>
+                        <Grid item xs={6} style={{ textAlign: "right" }}>
+                            {this.props.age}
+                        </Grid>
                     </Grid>
 
             </React.Fragment>
