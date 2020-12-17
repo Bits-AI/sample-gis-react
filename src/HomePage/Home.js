@@ -19,6 +19,14 @@ class Home extends React.Component {
 
             mode: [
                 'view',
+                'view',
+                'view',
+                'view',
+                'view',
+                'view',
+                'view',
+                'view',
+                'view',
                 'view'
             ],
 
@@ -212,7 +220,9 @@ class Home extends React.Component {
                                                     marker={this.state.marker[idx]}
                                                     owner={this.state.owner[idx]}
                                                     income={this.state.income[idx]}
-                                                    description={this.state.description[idx]} />
+                                                    description={this.state.description[idx]}
+                                                    member={this.state.member[idx]}
+                                                    age={this.state.age[idx]} />
 
                                                 <Box style={{ textAlign: "center" }}>
                                                     <Button variant="contained" color="primary"
